@@ -92,7 +92,11 @@ class gGames(commands.Cog):
             await ctx.send('successful')
 
     @commands.command()
-    async def get_games(self, member: discord.Member):
+    async def get_games(self, ctx, *, member):
+        if (not len(ctx.message)==0):
+            member = ctx.message
+        else:
+            member = ctx.message.author
         with open('games2.json', 'r') as f:
             data = json.load(f)
         result = data[member]['games-ranked']
