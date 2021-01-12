@@ -18,5 +18,5 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run ('NzkyMTIyMjI5NTcxNTg0MDQy.X-ZHUA.j0DSuT3Jcw6gtrBOgSYUwfriM0o')
+client.run ('INSERT_YOUR_DISCORD_BOT_TOKEN_HERE')
 
