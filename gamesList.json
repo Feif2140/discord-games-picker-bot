@@ -1,0 +1,26 @@
+{
+
+    "user#0000": {
+        "games-ranked": [
+             "game1",
+             "game2",
+             "game3"
+        ]
+    },
+    "Feif#2140": {
+        "games-ranked": [
+            "minesweeper",
+            "team fortress tactics",
+            "minecraft",
+            "overwatch",
+            "starcraftII",
+            "league of legends"
+        ]
+    },
+    "aniee#7024": {
+        "games-ranked": [
+            "starcraftII",
+            "minecraft"
+        ]
+    }
+}
