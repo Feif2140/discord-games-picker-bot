@@ -30,8 +30,8 @@ class gGames(commands.Cog):
         game = str(info.split('$')[0])
         rank = int(info.split('$')[1])
 
-        if os.path.isfile('games2.json'):
-            with open('games2.json', 'r') as f:
+        if os.path.isfile('$gamesList.json'):
+            with open('$gamesList.json', 'r') as f:
                 data = json.load(f)
             try:
                 pylist = data[member]['games-ranked']
@@ -41,7 +41,7 @@ class gGames(commands.Cog):
                 data[member] = {'games-ranked': [game]}
         else: 
             data = {member: {'games-ranked': [game]}}
-        with open('games2.json', 'w+') as f:
+        with open('$gamesList.json', 'w+') as f:
             json.dump(data, f, sort_keys=True, indent=4)
         await ctx.send('game added')
 
@@ -60,8 +60,8 @@ class gGames(commands.Cog):
         game = info
         if (game==''):
             await ctx.send('no game selected')
-        if os.path.isfile('games2.json'):
-            with open('games2.json', 'r') as f:
+        if os.path.isfile('$gamesList.json'):
+            with open('$gamesList.json', 'r') as f:
                 data = json.load(f)
             try:
                 pylist = data[member]['games-ranked']
@@ -74,7 +74,7 @@ class gGames(commands.Cog):
         else: 
             await ctx.send('no os path, running else block')
             return
-        with open('games2.json', 'w+') as f:
+        with open('$gamesList.json', 'w+') as f:
             await ctx.send('json dumping')
             json.dump(data, f, sort_keys=True, indent=4)
         await ctx.send('game added succesfully')
@@ -85,8 +85,8 @@ class gGames(commands.Cog):
         if (not info == "confirm"):
             await ctx.send('please type .eraseGames <confirm> , are you sure')
         else:
-            if os.path.isfile('games2.json'):
-                with open('games2.json', 'r') as f:
+            if os.path.isfile('$gamesList.json'):
+                with open('$gamesList.json', 'r') as f:
                     data = json.load(f)
                 try:
                     data[member]['games-ranked'] = []
@@ -95,7 +95,7 @@ class gGames(commands.Cog):
                     return
             else: 
                 return
-            with open('games2.json', 'w+') as f:
+            with open('$gamesList.json', 'w+') as f:
                 json.dump(data, f, sort_keys=True, indent=4)
         await ctx.send('you have succesfully deleted all your ranked games')
 
@@ -112,7 +112,7 @@ class gGames(commands.Cog):
             while ctx.message.mentions[i] is not None:
                 member = str(ctx.message.mentions[i])
                 await ctx.send('member : ' + member)
-                with open('games2.json', 'r') as f:
+                with open('$gamesList.json', 'r') as f:
                     data = json.load(f)
                 result = data[member]['games-ranked']
                 await ctx.send(', '.join(result))
@@ -120,7 +120,7 @@ class gGames(commands.Cog):
         else:
             member = str(ctx.message.author)
             await ctx.send('member = ' + member)
-            with open('games2.json', 'r') as f:
+            with open('$gamesList.json', 'r') as f:
                 data = json.load(f)
             result = data[member]['games-ranked']
             await ctx.send(', '.join(result))       
@@ -139,7 +139,7 @@ class gGames(commands.Cog):
         master = []
         while i<len(ctx.message.mentions):
             member = str(ctx.message.mentions[i])
-            with open('games2.json', 'r') as f:
+            with open('$gamesList.json', 'r') as f:
                 data = json.load(f)
                 games = data[member]['games-ranked']
             master += games
@@ -152,7 +152,7 @@ class gGames(commands.Cog):
         max = 0
         while i<len(ctx.message.mentions):
             member = str(ctx.message.mentions[i])
-            with open('games2.json', 'r') as f:
+            with open('$gamesList.json', 'r') as f:
                 data = json.load(f)
                 games = data[member]['games-ranked']
             if (len(games)>max):
@@ -173,7 +173,7 @@ class gGames(commands.Cog):
         result = await self.formatR(master_games)
         while i<len(ctx.message.mentions):
             member = str(ctx.message.mentions[i])
-            with open('games2.json', 'r') as f:
+            with open('$gamesList.json', 'r') as f:
                 data = json.load(f)
             games = data[member]['games-ranked']
             for x in master_games:
